@@ -78,13 +78,7 @@ speed_test() {
 
 speed() {
     speed_test '' 'Speedtest.net'
-    speed_test '5145'  'Beijing    CU'
-    speed_test '3633'  'Shanghai   CT'
-    speed_test '24447' 'Shanghai   CU'
-    speed_test '27594' 'Guangzhou  CT'
-    speed_test '26678' 'Guangzhou  CU'
-    speed_test '16192' 'Shenzhen   CU'
-    speed_test '4515'  'Shenzhen   CM'
+    speed_test '7582'  'Jakarta    ID'
     speed_test '32155' 'Hongkong   CN'
     speed_test '13623' 'Singapore  SG'
     speed_test '15047' 'Tokyo      JP'
@@ -227,22 +221,22 @@ echo " Kernel                : $(_blue "$kern")"
 echo " TCP CC                : $(_blue "$tcpctrl")"
 echo " Virtualization        : $(_blue "$virt")"
 ipv4_info
-next
-io1=$( io_test )
-echo " I/O Speed(1st run)    : $(_yellow "$io1")"
-io2=$( io_test )
-echo " I/O Speed(2nd run)    : $(_yellow "$io2")"
-io3=$( io_test )
-echo " I/O Speed(3rd run)    : $(_yellow "$io3")"
-ioraw1=$( echo $io1 | awk 'NR==1 {print $1}' )
-[ "`echo $io1 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw1=$( awk 'BEGIN{print '$ioraw1' * 1024}' )
-ioraw2=$( echo $io2 | awk 'NR==1 {print $1}' )
-[ "`echo $io2 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw2=$( awk 'BEGIN{print '$ioraw2' * 1024}' )
-ioraw3=$( echo $io3 | awk 'NR==1 {print $1}' )
-[ "`echo $io3 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw3=$( awk 'BEGIN{print '$ioraw3' * 1024}' )
-ioall=$( awk 'BEGIN{print '$ioraw1' + '$ioraw2' + '$ioraw3'}' )
-ioavg=$( awk 'BEGIN{printf "%.1f", '$ioall' / 3}' )
-echo -e " Average I/O speed     : $(_yellow "$ioavg MB/s")"
+#next
+#io1=$( io_test )
+#echo " I/O Speed(1st run)    : $(_yellow "$io1")"
+#io2=$( io_test )
+#echo " I/O Speed(2nd run)    : $(_yellow "$io2")"
+#io3=$( io_test )
+#echo " I/O Speed(3rd run)    : $(_yellow "$io3")"
+#ioraw1=$( echo $io1 | awk 'NR==1 {print $1}' )
+#[ "`echo $io1 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw1=$( awk 'BEGIN{print '$ioraw1' * 1024}' )
+#ioraw2=$( echo $io2 | awk 'NR==1 {print $1}' )
+#[ "`echo $io2 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw2=$( awk 'BEGIN{print '$ioraw2' * 1024}' )
+#ioraw3=$( echo $io3 | awk 'NR==1 {print $1}' )
+#[ "`echo $io3 | awk 'NR==1 {print $2}'`" == "GB/s" ] && ioraw3=$( awk 'BEGIN{print '$ioraw3' * 1024}' )
+#ioall=$( awk 'BEGIN{print '$ioraw1' + '$ioraw2' + '$ioraw3'}' )
+#ioavg=$( awk 'BEGIN{printf "%.1f", '$ioall' / 3}' )
+#echo -e " Average I/O speed     : $(_yellow "$ioavg MB/s")"
 next
 install_speedtest && printf "%-18s%-18s%-20s%-12s\n" " Node Name" "Upload Speed" "Download Speed" "Latency"
 speed && ##rm -fr speedtest-cli
